@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome": "Liquidificador",
+    "descricao": "Para preparar nossos cafés da manhã juntos ☕",
+    "imagem": "foto1.png",
+    "link": "pagamento.html"
+  },
+  {
+    "id": 2,
+    "nome": "Jogo de Panelas",
+    "descricao": "Para nossas primeiras refeições 🍽️",
+    "imagem": "foto1.png",
+    "link": "pagamento.html"
+  }
+]

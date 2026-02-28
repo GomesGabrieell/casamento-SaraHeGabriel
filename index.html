@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gabriel & Sarah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="menu"> 
+  <header>
+    <div class="logo">G & S</div>
+    <a href="presente.html">PRESENTES</a>
+  </header>
+</div>
+
+<!-- HERO FULL WIDTH (FORA DE SECTION) -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Gabriel & Sarah</h1>
+    <p>DUAS ALMAS, UM SÓ CORAÇÃO</p>
+  </div>
+</div>
+    <div class="seta-para-baixo"></div>
+
+<!-- CONTEÚDO CENTRAL -->
+<section id="quote">
+  <p class="quote">
+    “O amor não é encontrar alguém para viver.  
+    É encontrar alguém sem quem você não consegue viver.”
+  </p>
+
+  <p>
+    Com amor,<br>
+    <strong style="color:var(--green)">Gabriel & Sarah</strong>
+  </p>
+</section>
+
+<section>
+  <h2>Momentos Especiais</h2>
+
+  <div class="gallery">
+    <img src="foto1.png" alt="Momento 1">
+    <img src="foto2_1.png" alt="Momento 2">
+    <img src="foto4.png" alt="Momento 3">
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <p>
+      A sua presença será uma honra imensa para nós.  
+      Nada nos trará mais alegria do que compartilhar este dia tão especial  
+      com pessoas queridas que fazem parte da nossa história.
+    </p>
+
+    <button class="btn" onclick="window.location.href='presenca.html'">
+      CONFIRMAR PRESENÇA
+    </button>
+|
+    <button class="btn2 btn-wrapper"  onclick="window.location.href='presente.html'">LISTA DE PRESENTES</button>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 · Gabriel & Sarah
+</footer>
+<script>
+  const menu = document.getElementById('menu');
+  const quote = document.querySelector('.quote');
+
+  window.addEventListener('scroll', () => {
+    const quoteTop = quote.getBoundingClientRect().top;
+
+    if (quoteTop <= 0) {
+      menu.classList.add('active');
+    } else {
+      menu.classList.remove('active');
+    }
+  });
+</script>
+</body>
+</html>

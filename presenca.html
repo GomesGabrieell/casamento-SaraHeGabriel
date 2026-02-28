@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gabriel & Sarah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="presenca.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- ESTILOS EXTRAS (SEM MEXER NO SEU TEMA) -->
+  <style>
+    /* MODAL */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 999;
+    }
+
+    .modal-box {
+      background: #fff;
+      max-width: 420px;
+      margin: 10% auto;
+      padding: 25px;
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .modal-box h3 {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* CHECKBOX CUSTOM (necessário pois seu CSS remove appearance) */
+    .checkbox-custom {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .checkbox-custom input {
+      display: none;
+    }
+
+    .checkbox-custom .box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--green);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .checkbox-custom .box::after {
+      content: "✔";
+      display: none;
+    }
+
+    .checkbox-custom input:checked + .box::after {
+      display: block;
+    }
+
+    .checkbox-custom input:checked ~ span {
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">G & S</div>
+  <a href="index.html">HOME</a>
+</header>
+
+<section>
+  <div class="card">
+    <h2>Convidados</h2>
+    <p>Para confirmar presença, basta informar seu nome.</p>
+
+    <form id="formPresenca">
+      <input id="nome" type="text" placeholder="Primeiro Nome" required>
+      <br><br>
+      <input id="sobrenome" type="text" placeholder="Segundo Nome" required>
+      <br><br>
+      <button type="submit" class="btn">CONFIRMAR PRESENÇA</button>
+    </form>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-box">
+    <h3>Confirmar acompanhantes</h3>
+
+    <form id="formFamilia">
+      <div id="listaFamilia"></div>
+      <br>
+      <button type="submit" class="btn">Confirmar</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  © 2026 · Gabriel & Sarah
+</footer>
+
+<script src="convidados.js"></script>
+
+<script>
+const form = document.getElementById("formPresenca");
+const modal = document.getElementById("modal");
+const listaFamilia = document.getElementById("listaFamilia");
+const formFamilia = document.getElementById("formFamilia");
+
+const numeroWhatsApp = "553186716169";
+let dadosTemp = null;
+
+/* ============================= */
+/* ENVIO FORMULÁRIO PRINCIPAL    */
+/* ============================= */
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const sobrenome = document.getElementById("sobrenome").value.trim();
+
+  if (!nome || !sobrenome) return;
+
+  const chave = `${nome} ${sobrenome}`.toLowerCase();
+  const convidado = convidadosEspeciais?.[chave];
+
+  listaFamilia.innerHTML = "";
+  let temAcompanhante = false;
+
+  if (convidado) {
+
+    // Se tiver esposa
+    if (convidado.esposa) {
+      listaFamilia.innerHTML += criarCheckbox(convidado.esposa);
+      temAcompanhante = true;
+    }
+
+    // Se tiver filhos (e for array válido)
+    if (Array.isArray(convidado.filhos) && convidado.filhos.length > 0) {
+      convidado.filhos.forEach(filho => {
+        listaFamilia.innerHTML += criarCheckbox(filho);
+      });
+      temAcompanhante = true;
+    }
+  }
+
+  // Se tiver acompanhante abre modal
+  if (temAcompanhante) {
+    dadosTemp = { nome, sobrenome };
+    modal.style.display = "block";
+  } else {
+    // Se não tiver acompanhante vai direto pro WhatsApp
+    enviarWhatsApp(nome, sobrenome);
+  }
+});
+
+
+/* ============================= */
+/* ENVIO FORM FAMÍLIA            */
+/* ============================= */
+
+formFamilia.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const selecionados = [
+    ...document.querySelectorAll('input[name="acompanhantes"]:checked')
+  ].map(input => input.value);
+
+  modal.style.display = "none";
+
+  enviarWhatsApp(
+    dadosTemp.nome,
+    dadosTemp.sobrenome,
+    selecionados
+  );
+});
+
+
+/* ============================= */
+/* FUNÇÕES AUXILIARES            */
+/* ============================= */
+
+function criarCheckbox(nome) {
+  return `
+    <label class="checkbox-custom">
+      <input type="checkbox" name="acompanhantes" value="${nome}" checked>
+      <div class="box"></div>
+      <span>${nome}</span>
+    </label>
+  `;
+}
+
+function enviarWhatsApp(nome, sobrenome, acompanhantes = []) {
+
+  let mensagem = `Olá, eu sou ${nome} ${sobrenome} e vou estar presente no casamento da Sarah e do Gabriel.`;
+
+  if (acompanhantes.length > 0) {
+    mensagem += `\nAcompanhantes: ${acompanhantes.join(", ")}.`;
+  }
+
+  const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+  window.open(link, "_blank");
+}
+</script>
+
+
+
+</body>
+</html>

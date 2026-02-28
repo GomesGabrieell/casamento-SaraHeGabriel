@@ -1,0 +1,158 @@
+:root{
+  --green:#7a8f6a;
+  --green-dark:#5f7450;
+  --bg:#f7f6f2;
+  --text:#2f2f2f;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
+
+/* BODY */
+body{
+  font-family:'Montserrat', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+header{
+  top:0;
+  left:0;
+  width:100%;
+  background:rgb(91 113 94 / 95%);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 60px;
+  z-index:10;
+  border-bottom:1px solid #e2e2e2;
+}
+
+header .logo{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  letter-spacing:2px;
+}
+
+header a{
+  text-decoration:none;
+  color:#ced6c7;;
+  border:1px solid #d3d8cf;
+  padding:8px 18px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+/* SECTIONS (CONTEÚDO CENTRAL) */
+section{
+  max-width:1100px;
+  margin:120px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+
+/* CARD */
+.card{
+  background:#fff;
+  padding:20px;
+  max-width:600px;
+  margin:0 auto;
+  border-radius:6px;
+}
+
+.card p{
+  margin-bottom:25px;
+  color:#555;
+}
+
+/* BUTTON */
+.btn{
+  background:var(--green);
+  color:#fff;
+  border:none;
+  padding:14px 32px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* PIX */
+.pix{
+  margin-top:20px;
+  background:#f1f1f1;
+  padding:20px;
+  border-radius:6px;
+  font-size:15px;
+  word-break:break-all;
+}
+
+/* FOOTER */
+footer{
+  padding:5px 5px;
+  text-align:center;
+  font-size:14px;
+  color:#777;
+}
+
+/* RESPONSIVO */
+@media (max-width:768px){
+  header{
+    padding:20px;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero-content{
+    padding:40px 30px;
+  }
+}
+
+input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .87);
+    caret-color: rgba(0, 0, 0, .87);
+    font-size: 1rem;
+    width: 100%;
+    padding: 2px 0 8px;
+    border: 0;
+    background: 0 0;
+    outline: 0;
+    border-radius: 0;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    padding: 8px 12px;
+    width: 100%;
+    line-height: 24px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 0 transparent;
+    width: 70%;
+  }
+
+  form{
+    width:100%;
+  }

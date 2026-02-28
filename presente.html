@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Presentes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --green:#6e7f6a;
+  --bg:#efeeea;
+  --text:#2f2f2f;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(96,113,90,0.95);
+  padding:15px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  letter-spacing:3px;
+  color:#fff;
+  font-size:18px;
+}
+
+.home-btn{
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.5);
+  padding:6px 18px;
+  border-radius:20px;
+  font-size:12px;
+  text-decoration:none;
+}
+
+section{
+  max-width:1200px;
+  margin:160px auto 100px;
+  padding:0 40px;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#6a6a6a;
+  margin-bottom:50px;
+  font-size:15px;
+}
+
+.lista{
+  margin-top:40px;
+}
+
+.item{
+  margin-bottom:25px;
+}
+
+.item h3{
+  font-weight:500;
+  margin-bottom:5px;
+}
+
+.item p{
+  color:#777;
+  margin-bottom:10px;
+}
+
+.btn{
+  background:var(--green);
+  color:#fff;
+  border:none;
+  padding:10px 26px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+footer{
+  margin-top:80px;
+  font-size:13px;
+  color:#777;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#fff;
+  padding:40px;
+  border-radius:8px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  position:relative;
+}
+
+.fechar{
+  position:absolute;
+  right:20px;
+  top:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+textarea{
+  width:110%;
+  margin-top:15px;
+  padding:10px;
+  font-size:12px;
+}
+.lista{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.item{
+  width:100px;
+}
+@media(max-width:768px){
+  .lista{
+    flex-direction:column;
+    gap:30px;
+  }
+}
+.produto-img{
+  transition: transform 0.3s ease;
+}
+
+.produto-img:hover{
+  transform: scale(1.05);
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">G & S</div>
+  <a href="index.html" class="home-btn">HOME</a>
+</header>
+
+<section>
+
+  <h1>Lista de Presentes</h1>
+  <div class="subtitle">
+    Escolha um presente especial para nos abençoar neste novo começo.
+  </div>
+
+  <div class="lista">
+
+    <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Air Fryer</h3>
+      <p>R$ 350,00</p>
+      <button class="btn" onclick="gerarPix('Air Fryer',350)">Presentear</button>
+    </div>
+
+    <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+        <div class="item">
+      <img src="presente.png" alt="" class="produto-img">
+      <h3>Liquidificador</h3>
+      <p>R$ 200,00</p>
+      <button class="btn" onclick="gerarPix('Liquidificador',200)">Presentear</button>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 · Gabriel & Sarah
+  </footer>
+
+</section>
+
+<!-- MODAL PIX -->
+
+<div class="modal" id="modalPix">
+  <div class="modal-content">
+    <span class="fechar" onclick="fecharModal()">×</span>
+    <h3 id="produtoNome"></h3>
+    <p id="produtoValor"></p>
+    <div id="qrcode"></div>
+    <textarea id="codigoPix" readonly></textarea>
+    <br><br>
+    <button class="btn" onclick="copiarPix()">Copiar Código Pix</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+const chavePix = "5db1920b-6e6b-4aaf-b4af-5398263c7b01";
+const nome = "GABRIEL GOMES"; // máximo 25 caracteres
+const cidade = "SANTANA DO PARAISO"; // máximo 15 caracteres (sem acento)
+
+function gerarPix(descricao, valor){
+
+  valor = parseFloat(valor).toFixed(2);
+  let txid = "PEDIDO1"; // pode mudar dinamicamente se quiser
+
+  // ===== CAMPO 26 (Merchant Account Info) =====
+  let gui =
+    "00" + format("BR.GOV.BCB.PIX".length) + "BR.GOV.BCB.PIX" +
+    "01" + format(chavePix.length) + chavePix;
+
+  let merchantAccount =
+    "26" + format(gui.length) + gui;
+
+  // ===== CAMPO 62 (Additional Data - TXID) =====
+  let campo62 =
+    "05" + format(txid.length) + txid;
+
+  campo62 =
+    "62" + format(campo62.length) + campo62;
+
+  // ===== MONTAGEM DO PAYLOAD =====
+  let payload =
+    "000201" +                     // Payload Format Indicator
+    merchantAccount +              // Merchant Account
+    "52040000" +                   // Merchant Category Code
+    "5303986" +                    // Currency (986 = BRL)
+    "54" + format(valor.length) + valor +  // Amount
+    "5802BR" +                     // Country Code
+    "59" + format(nome.length) + nome +
+    "60" + format(cidade.length) + cidade +
+    campo62;
+
+  // ===== CRC16 =====
+  payload += "6304";
+  payload += crc16(payload);
+
+  console.log("PIX Payload:", payload);
+
+  document.getElementById("produtoNome").innerText = descricao;
+  document.getElementById("produtoValor").innerText = "Valor: R$ " + valor;
+  document.getElementById("codigoPix").value = payload;
+
+  document.getElementById("qrcode").innerHTML = "";
+
+  new QRCode(document.getElementById("qrcode"),{
+    text: payload,
+    width:200,
+    height:200
+  });
+
+  document.getElementById("modalPix").style.display="flex";
+}
+
+function format(valor){
+  return valor.toString().padStart(2,'0');
+}
+
+function crc16(payload) {
+  let polinomio = 0x1021;
+  let resultado = 0xFFFF;
+
+  for (let i = 0; i < payload.length; i++) {
+    resultado ^= payload.charCodeAt(i) << 8;
+    for (let j = 0; j < 8; j++) {
+      if ((resultado <<= 1) & 0x10000)
+        resultado ^= polinomio;
+      resultado &= 0xFFFF;
+    }
+  }
+
+  return resultado.toString(16).toUpperCase().padStart(4, '0');
+}
+
+function fecharModal(){
+  document.getElementById("modalPix").style.display="none";
+}
+
+function copiarPix(){
+  const campo = document.getElementById("codigoPix");
+  campo.select();
+  document.execCommand("copy");
+  alert("Código copiado!");
+}
+
+</script>
+
+
+</body>
+</html>
